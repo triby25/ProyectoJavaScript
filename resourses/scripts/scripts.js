@@ -53,7 +53,14 @@
 				tr.appendChild(tdEmail);
 				
 				table.appendChild(tr);
-			
+				
+				var listaInputs = document.querySelectorAll("input[type='text'],input[type='password'],input[type='email']");
+				
+				for (var i = 0; i < listaInputs.length; i++) {
+					listaInputs[i].value="";
+				}
+				document.getElementById("id").focus();
+				
 			};
 			
 			
