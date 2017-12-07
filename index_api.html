@@ -1,0 +1,70 @@
+<html>
+	<head>
+		<title>Api JavaScript</title>
+		<script src="resourses\scripts\jquery-3.2.1.min.js"></script>
+		<script src="resourses\scripts\scripts.js"></script>
+		<link rel="stylesheet" href="resourses\css\bootstrap.min.css"></script>
+		<link rel="stylesheet" href="resourses\css\main.css"></script>
+		<script>
+			var Post=function(){
+				self=this;
+				self.userId="";
+				self.id="";
+				self.title="";
+				self.body="";
+			}	
+			
+			$(document).ready(function(){
+				var root = 'https://jsonplaceholder.typicode.com';
+				$.ajax({
+					url: root + '/posts/',
+					method: 'GET'
+					}).then(function(data) {
+						$.each(data,function(i,post){
+							var content='<div class="col-md-10 divBorderBlack">'+
+							'<h1>'+post.title+'</h1></br>'+
+							'<p>'+post.body+'</p></br>'+
+							'</div></br>';
+							
+							$("#divista").append(content);
+						});
+				});
+				
+				
+				
+				$("#buscar").click(function(){
+					var id=$("#id").val(); 
+					var root = 'https://jsonplaceholder.typicode.com';
+
+					$.ajax({
+					url: root + '/posts/'+id,
+					method: 'GET'
+					}).then(function(data) {
+						console.log(data);
+						$("#titulo").html(data.title); 
+					});
+				})
+			})
+
+		</script>
+	</head>
+	<body>
+		<div><h1 align="center">Api JavaScript<h1></div>
+		<!--<div class="container">
+			<form class="form-horizontal"> 
+				<div class="form-group">
+					<label for="id" class="col-sm-1 control-label">ID</label>
+					<div class="col-sm-5">
+						<input type="text" class="form-control" id="id" placeholder="">
+					</div>
+				</div>
+				<button type="button" class="btn btn-primary" id="buscar">Buscar</button>
+			</form>
+		</div>-->
+		<div align="center">
+			<div  style="width:80%"  class="span8" id="divista" >
+			
+			</div>	
+		</div>		
+	</body>
+</html>
