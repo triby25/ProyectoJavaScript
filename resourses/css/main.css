@@ -13,3 +13,27 @@
     width: 50%;
     padding: 1px;
 }
+
+.divPost{
+	border-style: solid;
+	margin : auto;
+	margin-left: 10%;
+	margin-right: 10%;
+    width: 80%;
+    padding: 20px;
+	margin-bottom: 10px;
+	border-radius: 5px;
+	border-width: 1px;
+}
+
+.gi-2x{font-size: 2em;}
+
+body {
+  padding-top: 54px;
+}
+
+@media (min-width: 992px) {
+  body {
+    padding-top: 56px;
+  }
+}

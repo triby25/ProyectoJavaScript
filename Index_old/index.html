@@ -1,0 +1,80 @@
+<html>
+	<head>
+		<title>Registro De Estudiantes</title>
+		<script src="resourses\scripts\jquery-3.2.1.min.js"></script>
+		<script src="resourses\scripts\scripts.js"></script>
+		<link rel="stylesheet" href="resourses\css\bootstrap.min.css"></script>
+		<link rel="stylesheet" href="resourses\css\main.css"></script>
+	</head>
+	<body>
+		<div class="container">
+			<div ><h1 align="center">Registro De Estudiantes<h1></div>
+			<div class="col-sm-6" id="divformulario">
+				<form class="form-horizontal"> 
+					<div class="form-group">
+						<label for="id" class="col-sm-1 control-label">ID</label>
+						<div class="col-sm-5" style="padding-left: 60px;">
+							<input type="text" class="form-control" id="id" placeholder="000001">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="nombre" class="col-sm-1 control-label">Nombre</label>
+						<div class="col-sm-10" style="padding-left: 60px;">
+							<input type="text" class="form-control" id="nombre" placeholder="Juan Perez">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="matricula" class="col-sm-1 control-label">Matrícula</label>
+						<div class="col-sm-5" style="padding-left: 60px;">
+							<input type="text" class="form-control" id="matricula" placeholder="0-00-0000">	 
+						</div>				
+					</div>
+					<div class="form-group">
+						<label for="identificacion" class="col-sm-1 control-label">Identificación</label>
+						<div class="col-sm-5" style="padding-left: 60px;">
+							<input type="text" class="form-control" id="identificacion" placeholder="000-0000000-0">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="telefono" class="col-sm-1 control-label">Teléfono</label>
+						<div class="col-sm-5" style="padding-left: 60px;">
+							<input type="text" class="form-control" id="telefono" placeholder="000-000-0000">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="email" class="col-sm-1 control-label">Email</label>
+						<div class="col-sm-10" style="padding-left: 60px;">
+							<input type="email" class="form-control" id="email" placeholder="estudiante@dominio.com"></br>
+						</div>
+					</div>
+					
+					<button type="button" class="btn btn-primary" id="agregar-Estudiante">Agregar Estudiante</button>
+					<button type="button" class="btn btn-danger"  id="borrar-seleccionados" >Borrar Estudiantes Seleccionados</button>
+					<button type="button" class="btn btn-success" id="borrarTodosEstuduantes">Eliminar Datos</button>
+				</form> 
+			</div>
+			
+			</br>
+			
+			<div class="col-sm-10">
+				<table class="table table-hover divBorderBlack">
+					<thead>
+						<tr>
+							<th></th>
+							<th>Id</th>
+							<th>Nombre</th>
+							<th>Matrícula</th>
+							<th>Identificación</th>
+							<th>Teléfono</th>
+							<th>Email</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody id="estudiantes">
+					</tbody>
+				</table>
+			</div>
+		</div>
+		
+	</body>
+</html>
