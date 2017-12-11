@@ -1,17 +1,8 @@
-
-var Post=function(){
-	self=this;
-	self.userId="";
-	self.id="";
-	self.title="";
-	self.body="";
-}	
-			
 $(document).ready(function(){
 	var root = 'https://jsonplaceholder.typicode.com';
 	var listaUsuarios=[];
 	
-	$.ajax({
+	var ajaxUusarios=$.ajax({
 		url: root + '/users/',
 		method: 'GET'
 		}).then(function(data) {
@@ -20,74 +11,82 @@ $(document).ready(function(){
 			});
 			localStorage.setItem('listaUsuarios', JSON.stringify(listaUsuarios));
 		});	
-		
-	$.ajax({
-		url: root + '/posts/',
-		method: 'GET'
-		}).then(function(data) {
-				var listaPostsFavoritos=[]
-				var postFavoritos = localStorage.getItem('postFavoritos');
-				var listaPostsFavoritos=JSON.parse(postFavoritos);
-				if(listaPostsFavoritos==null)
-					listaPostsFavoritos=[];
 	
-			$.each(data,function(i,post){
-				var objUsuario=listaUsuarios[post.userId];
-				
-				var clase="glyphicon glyphicon-star-empty";
-				for (var i = 0; i < listaPostsFavoritos.length; i++) {
-					if(listaPostsFavoritos[i]==post.id){
-						clase="glyphicon glyphicon-star";
-						break;
-					}
+	ajaxUusarios.then(function() { 	
+		$.ajax({
+			url: root + '/posts/',
+			method: 'GET'
+			}).then(function(data) {
+				var localStorage = window.localStorage;
+				var listaPostsFavoritos=[]
+				var postFavoritos = localStorage.getItem('postFavoritos');	
+				if(postFavoritos!=null){
+					var listaPostsFavoritos=JSON.parse(postFavoritos);
 				}
 				
-				var content='<div class="card mb-4 divPost">'+
-					'<div class="card-body">'+
-					'  <h2 class="card-title">'+
-					'<a href="#" style="padding-right: 10px;">'+
-						'<span class="'+clase+'" id="'+post.id+'"></span>'+
-					'</a>'+
-					'<a href="comentarios.html?idPost='+post.id+'">'+post.title+'</a></h2>'+
-					'  <p class="card-text">'+post.body+'</p>'+
-					'</div>'+
-					'<div class="card-footer text-muted">'+
-					'  <a href="infoUsuario.html?idUsuario='+objUsuario["id"]+'">'+objUsuario["name"]+' ('+objUsuario["email"]+')</a>'+
-					'</div>'+
-					'</div>';
+				$.each(data,function(i,post){
+					var existe = post.id in listaPostsFavoritos;
+					var objUsuario=listaUsuarios[post.userId];
+					
+					var content='<div class="divPost">'+
+						'			<div class="row"><h3>'+
+						'				<div class="col-md-11">'+
+						'					<a href="comentarios.html?idPost='+post.id+'">'+post.title+'</a>'+
+						'				</div>'+
+						'				<div class="col-md-1">'+
+						'					<a href="#">'+
+						'						<span class="favorito glyphicon '+(existe ? 'glyphicon-star':'glyphicon-star-empty')+'" id="'+post.id+'"></span>'+
+						'					</a>'+
+						'				</div>'+
+						'			</h3></div>'+
+						'			<div class="row">'+
+						'				<div class="col-md-12">'+
+						'  					<p class="card-text">'+post.body+'</p>'+
+						'				</div>'+
+						'			</div>'+
+						'			<div class="row">'+
+						'				<div class="col-md-12" align="right">'+
+						'  					<a href="infoUsuario.html?idUsuario='+objUsuario["id"]+'">'+
+						'						<span class="glyphicon glyphicon-user"><label class="glyphicon-label-padding">'+objUsuario["name"]+'</label></span></br>'+
+						'						<span class="glyphicon glyphicon-envelope"><label class="glyphicon-label-padding">'+objUsuario["email"]+'</label></span>'+
+						'					</a>'+
+						'				</div>'+
+						'			</div>';
 
-					//console.log(post);		
-				$("#divContenedor").append(content);
+						//console.log(post);		
+					$("#divContenedor").append(content);
+				});
 			});
-		});
+	});
 	
-	$('body').on('click', '#divContenedor span', function(){
-		marcarFavorito($(this).attr('id'));
+	$('body').on('click', '.favorito', function(){
+		var existe=marcarFavorito($(this).attr('id'));
+		$(this).removeClass(existe ? 'glyphicon-star-empty':'glyphicon-star');
+		$(this).addClass(existe ? 'glyphicon-star': 'glyphicon-star-empty');
+					
+		event.preventDefault();
 	})
 })
 
 function marcarFavorito(id){
-	var listaPostsFavoritos=[]
-	var marcaEstrella =document.getElementById(id);
-	var postFavoritos = localStorage.getItem('postFavoritos');
-	var listaPostsFavoritos=JSON.parse(postFavoritos);
-	if(listaPostsFavoritos==null)
-		listaPostsFavoritos=[];
-		
-		
-	if(marcaEstrella.classList.contains("glyphicon-star-empty")){
-		marcaEstrella.setAttribute("class", "glyphicon glyphicon-star");
-		listaPostsFavoritos.push(id);
-		localStorage.setItem('postFavoritos', JSON.stringify(listaPostsFavoritos));
-	}
-	else{
-		marcaEstrella.setAttribute("class", "glyphicon glyphicon-star-empty");
-		for (var i = 0; i < listaPostsFavoritos.length; i++) {
-			if(listaPostsFavoritos[i]==id){
-				listaPostsFavoritos.splice(i, 1);
-				break;
-			}
+	var localStorage = window.localStorage;
+	var listaPostsFavoritos = {};
+	var dbPostFavorito = localStorage.getItem('postFavoritos');
+	var existe = false;
+	
+	if (dbPostFavorito != null){
+		listaPostsFavoritos = JSON.parse(dbPostFavorito);
+		if(id in listaPostsFavoritos){
+			delete listaPostsFavoritos[id];
 		}
-		localStorage.setItem('postFavoritos', JSON.stringify(listaPostsFavoritos));
+		else{		
+			existe = true;
+			listaPostsFavoritos[id] = true;
+		}
+	}else{
+		listaPostsFavoritos[id] = true;
 	}
+
+	localStorage.setItem('postFavoritos', JSON.stringify(listaPostsFavoritos));
+	return existe;
 };

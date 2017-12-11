@@ -28,5 +28,11 @@ $(document).ready(function(){
 	', Codigo Postal : '+objDireccion["zipcode"]);
 	$("#compania").html(objCompania["name"]);
 	
+	$.ajax({
+		url: root + '/posts/?userId='+idUsuario,
+		method: 'GET'
+		}).then(function(data) {
+			$("#cantidadPost").html(data.length);
+		});	
 })
 

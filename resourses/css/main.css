@@ -26,6 +26,9 @@
 	border-width: 1px;
 }
 
+.glyphicon-label-padding{
+	padding-left: 5px;
+}
 .gi-2x{font-size: 2em;}
 
 body {
