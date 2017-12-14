@@ -22,7 +22,7 @@ $(document).ready(function(){
 				var listaPostsFavoritos=[]
 				var postFavoritos = localStorage.getItem('postFavoritos');	
 				if(postFavoritos!=null){
-					var listaPostsFavoritos=JSON.parse(postFavoritos);
+					listaPostsFavoritos=JSON.parse(postFavoritos);
 				}
 				
 				$.each(data,function(i,post){

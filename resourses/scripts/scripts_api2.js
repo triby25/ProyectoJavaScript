@@ -1,16 +1,11 @@
-var listaUsuarios=[];
-
 $(document).ready(function(){
 	var root = 'https://jsonplaceholder.typicode.com';
 	var urlParams = new URLSearchParams(window.location.search);
 	var idPostSeleccionado=urlParams.get('idPost');
-	
+	var listaUsuarios=[];	
 	var lista = localStorage.getItem('listaUsuarios');
 	if(lista!=null){
-		var usuariosGuardados= JSON.parse(lista);
-		$.each(usuariosGuardados,function(i,usu){
-			listaUsuarios.push(usu);
-		});
+		listaUsuarios= JSON.parse(lista);
 	}
 	
 	
@@ -48,8 +43,7 @@ $(document).ready(function(){
 					' </div>'+
 					'</div>'+
 					'</article>';
-
-					console.log(content);		
+	
 				$("#listaComentarios").append(content);
 			});
 		});
