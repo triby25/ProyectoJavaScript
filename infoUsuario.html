@@ -4,28 +4,37 @@
 		<script src="resourses\scripts\jquery-3.2.1.min.js"></script>
 		<script src="resourses\scripts\scripts_api3.js"></script>
 		<link rel="stylesheet" href="resourses\css\bootstrap.min.css"></script>
+		<link rel="stylesheet" href="resourses\css\main.css"></script>
+		<style>
+			.bgimg {
+				background-image: url('./resourses/img/bgheader.jpg');
+			}
+			.hdimg {
+				background-image: url('./resourses/img/header.png');
+			}
+			
+		</style>
 	</head>
-	<body>
+	<body class="bgimg">
 		<div class="container">
 		  <div class="row">
 			<div class="col-md-8">
-			  <h2 class="page-header">Información Del Usuario</h2>
+			  <h2 class="page-header titulo">Información Del Usuario</h2>
 				<section class="comment-list" id="infoUsuario">
 				  <article class="row">
 					<div class="col-md-10 col-sm-10">
 					  <div class="panel panel-default arrow left">
-						<div class="panel-heading right" style="background-color:LightSteelBlue "><b>Usuario : <label id="usuario"></label></b></div>
+						<div class="panel-heading right hdimg"><h2><b><label id="nombre"></label></b></h2></div>
 						<div class="panel-body">
 						  <header class="text-left">
-							<div class="comment-user" ><i class="fa fa-user"></i> <label style="color:LightSteelBlue">Nombre :    </label> <label id="nombre"></label></div>
-							<div class="comment-user" ><i class="fa fa-user"></i> <label style="color:LightSteelBlue">E-Mail :    </label> <label id="correo"></label></div>
-							<div class="comment-user" ><i class="fa fa-user"></i> <label style="color:LightSteelBlue">Teléfono :  </label> <label id="telefono"></label></div>
-							<div class="comment-user" ><i class="fa fa-user"></i> <label style="color:LightSteelBlue">WebSite :   </label> <label id="website"></label></div>
-							<div class="comment-user" ><i class="fa fa-user"></i> <label style="color:LightSteelBlue">Dirección : </label> <label id="direccion"></label></div>
-							<div class="comment-user" ><i class="fa fa-user"></i> <label style="color:LightSteelBlue">Compañía : </label> <label id="compania"></label></div>
-							<div class="comment-user" ><i class="fa fa-user"></i> <label style="color:LightSteelBlue">Post Del Usuario : </label> <label id="cantidadPost"></label></div>
+							<div class="comment-user" ><span class="glyphicon glyphicon-user"></span><i class="fa fa-user"></i> <label style="color:#4390bc">Usuario :    </label> <label id="usuario"></label></div>
+							<div class="comment-user" ><span class="glyphicon glyphicon-envelope"></span><i class="fa fa-user"></i> <label style="color:#4390bc">E-Mail :    </label> <label id="correo"></label></div>
+							<div class="comment-user" ><span class="glyphicon glyphicon-earphone"></span><i class="fa fa-user"></i> <label style="color:#4390bc">Teléfono :  </label> <label id="telefono"></label></div>
+							<div class="comment-user" ><span class="glyphicon glyphicon-globe"></span><i class="fa fa-user"></i> <label style="color:#4390bc">WebSite :   </label> <label id="website"></label></div>
+							<div class="comment-user" ><span class="glyphicon glyphicon-home"></span><i class="fa fa-user"></i> <label style="color:#4390bc">Dirección : </label> <label id="direccion"></label></div>
+							<div class="comment-user" ><span class="glyphicon glyphicon-briefcase"></span><i class="fa fa-user"></i> <label style="color:#4390bc">Compañía : </label> <label id="compania"></label></div>
+							<div class="comment-user" ><span class="glyphicon glyphicon-envelope"></span><i class="fa fa-user"></i> <label style="color:#4390bc">Post Del Usuario : </label> <label id="cantidadPost"></label></div>
 						  </header>
-						  
 						</div>
 					  </div>
 					</div>

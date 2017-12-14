@@ -9,6 +9,7 @@ $(document).ready(function(){
 			$.each(data,function(i,usuario){
 				listaUsuarios[usuario.id]=usuario;
 			});
+			
 			localStorage.setItem('listaUsuarios', JSON.stringify(listaUsuarios));
 		});	
 	
@@ -29,7 +30,7 @@ $(document).ready(function(){
 					var objUsuario=listaUsuarios[post.userId];
 					
 					var content='<div class="divPost">'+
-						'			<div class="row"><h3>'+
+						'			<div class="row divPostHeader hdimg"><h3>'+
 						'				<div class="col-md-11">'+
 						'					<a href="comentarios.html?idPost='+post.id+'">'+post.title+'</a>'+
 						'				</div>'+
