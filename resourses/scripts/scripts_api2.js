@@ -1,5 +1,42 @@
+function cerrarSesion(){
+	//var root = 'https://jsonplaceholder.typicode.com';
+	var root = 'http://192.168.200.245:8080';
+	
+
+	var dbToken = localStorage.getItem('usuarioLogueado');
+	var strtoken;
+	
+	if (dbToken != null){
+		strtoken = JSON.parse(dbToken);
+	}
+	
+	var objLogout={token:strtoken};
+	 
+	$.ajax({
+		type: 'POST',
+		url: root + '/logout',
+		data: JSON.stringify(objLogout),
+		success: function(data){
+			console.log(data);
+			window.location.href="registroUsuario.html";
+		}
+	});
+	
+	//alert(titulo+' ' +comentario);
+}
+
+
 $(document).ready(function(){
-	var root = 'https://jsonplaceholder.typicode.com';
+	//var root = 'https://jsonplaceholder.typicode.com';
+	var root = 'http://192.168.200.245:8080';
+	
+	var dbToken = localStorage.getItem('usuarioLogueado');
+	var token;
+	
+	if (dbToken != null){
+		token = JSON.parse(dbToken);
+	}
+	
 	var urlParams = new URLSearchParams(window.location.search);
 	var idPostSeleccionado=urlParams.get('idPost');
 	var listaUsuarios=[];	
@@ -10,19 +47,18 @@ $(document).ready(function(){
 	
 	
 	$.ajax({
-		url: root + '/posts/'+idPostSeleccionado,
+		url: root + '/posts/'+idPostSeleccionado+'?token='+token,
 		method: 'GET'
 		}).then(function(data) {
 			var objUsuario=listaUsuarios[data.userId];
 			$("#titulo").html(data.title);
 			$("#comentario").html(data.body);
 			$("#usuario").html(objUsuario["name"]+'     -     '+objUsuario["email"]);
-
 		});	
 	
 	
 	$.ajax({
-		url: root + '/comments/?postId='+idPostSeleccionado,
+		url: root + '/comments/?postId='+idPostSeleccionado+'&token='+token,
 		method: 'GET'
 		}).then(function(data) {
 	
@@ -48,4 +84,11 @@ $(document).ready(function(){
 			});
 		});
 	
+	$("#agregarComentario").click(function(){
+		window.location.href="agregarComentario.html?idPost="+idPostSeleccionado
+	});
+	
+		$("#logout").click(function(){
+		cerrarSesion();
+	});
 })
