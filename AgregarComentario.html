@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Api JavaScript</title>
+		<script src="resourses\scripts\jquery-3.2.1.min.js"></script>
+		<script src="resourses\scripts\scripts_post.js"></script>
+		
+		<link rel="stylesheet" href="resourses\css\bootstrap.min.css"></script>
+		<link rel="stylesheet" href="resourses\css\main.css"></script>
+		<style>
+			.bgimg {
+				background-image: url('./resourses/img/bgheader.jpg');
+
+			}
+			.hdimg {
+				background-image: url('./resourses/img/header.png');
+			}
+		</style>
+	</head>
+	<body class="bgimg">
+		<div class="container">
+		
+			<div class="row " style="margin-bottom: 5px;">
+				<div class="col-sm-10">
+					<h1 class="page-header titulo" align="center">Registro De Comentario</h1>
+				</div>
+				
+				<div class="col-sm-2">
+					<button type="button" class="btn btn-primary" id="logout">Logout</button>
+				</div>			
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-6" id="divformulario">
+					<form class="form-horizontal"> 
+						<div class="form-group">
+							<label for="titulo" class="col-sm-3 control-label blanco">Nombre</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="nombreComentario" placeholder="Nombre">
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label for="titulo" class="col-sm-3 control-label blanco">Correo</label>
+							<div class="col-sm-9">
+								<input type="email" class="form-control" id="correoComentario" placeholder="Correo">
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label for="comentario" class="col-sm-3 control-label blanco">Comentario</label>
+							<div class="col-sm-9">
+								<textarea type="text" class="form-control" id="detalleComentario" placeholder="Comentario"></textarea>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<div class="col-sm-9">
+								<button type="button" class="btn btn-primary" id="guardarComentario">Guardar</button>
+							</div>
+						</div>
+					</form> 
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Api JavaScript</title>
+		<script src="resourses\scripts\jquery-3.2.1.min.js"></script>
+		<script src="resourses\scripts\scripts_post.js"></script>
+		
+		<link rel="stylesheet" href="resourses\css\bootstrap.min.css"></script>
+		<link rel="stylesheet" href="resourses\css\main.css"></script>
+		<style>
+			.bgimg {
+				background-image: url('./resourses/img/bgheader.jpg');
+
+			}
+			.hdimg {
+				background-image: url('./resourses/img/header.png');
+			}
+		</style>
+	</head>
+	<body class="bgimg">
+		<div class="container">
+			<div class="row " style="margin-bottom: 5px;">
+				<h1 class="page-header titulo" align="center">Registrarse</h1>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-6" id="divformulario">
+					<form class="form-horizontal"> 
+						<div class="form-group">
+							<label for="usuario" class="col-sm-3 control-label blanco">Usuario</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="usuario" placeholder="Nombre De Usuario">
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label for="clave" class="col-sm-3 control-label blanco">Contraseña</label>
+							<div class="col-sm-9">
+								<input type="password" class="form-control" id="clave" placeholder="Contraseña">
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label for="correo" class="col-sm-3 control-label blanco">Correo</label>
+							<div class="col-sm-9">
+								<input type="email" class="form-control" id="correo" placeholder="usuario@dominio.com">
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<div class="col-sm-8"></div>
+							<div class="col-sm-2">
+								<button type="button" class="btn btn-primary" id="registrarse">Registrarse</button>
+							</div>
+							<div class="col-sm-1">
+								<button type="button" class="btn btn-success" id="login">Login</button>
+							</div>
+						</div>
+					</form> 
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
